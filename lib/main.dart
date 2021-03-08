@@ -1,10 +1,17 @@
+import 'package:brew_crew/screens/wrapper.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: Container(
-      child: Text("this is a test"),
-    ),
-  ));
+  runApp(MyApp());
+}
+
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Wrapper(),
+    );
+  }
 }
 
