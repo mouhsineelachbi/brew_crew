@@ -45,6 +45,7 @@ class _RegisterState extends State<Register> {
               children: [
                 SizedBox(height: 20.0),
                 TextFormField(
+                  validator: (val) => val.isEmpty ? "Enter an email" : null,
                   onChanged: (val) {
                     setState(() {
                       email = val;
@@ -54,6 +55,7 @@ class _RegisterState extends State<Register> {
                 SizedBox(height: 20.0),
                 TextFormField(
                   obscureText: true,
+                  validator: (val) => val.length < 6 ? "Enter a password 6+ long" : null,
                   onChanged: (val) {
                     setState(() {
                       password = val;
@@ -63,7 +65,9 @@ class _RegisterState extends State<Register> {
                 SizedBox(height: 20.0),
                 RaisedButton(
                   onPressed: () async {
-                    print('Email : $email and Password is : $password ');
+                    if(_formKey.currentState.validate()){
+                      print('Email : $email and Password is : $password ');
+                    }
                   },
                   color: Colors.pink[400],
                   child: Text(
