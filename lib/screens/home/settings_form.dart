@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../shared/constants.dart';
+
 class SettingsForm extends StatefulWidget {
   @override
   _SettingsFormState createState() => _SettingsFormState();
@@ -8,7 +10,8 @@ class SettingsForm extends StatefulWidget {
 class _SettingsFormState extends State<SettingsForm> {
 
   final _formKey = GlobalKey<FormState>();
-  final List<String> sugars = ['0', '1', '2', '3', '4'];
+  final List<String> sugars = ['0', '1', '2', '3', '4'].toList();
+
 
   //  Form values
   String _currentName;
@@ -24,7 +27,40 @@ class _SettingsFormState extends State<SettingsForm> {
           Text(
             'Update your brew settings',
             style: TextStyle(fontSize: 18.0),
-          )
+          ),
+          SizedBox(height: 20.0,),
+          TextFormField(
+            decoration: textInputDecoration,
+            validator: (val) => val.isEmpty ? 'Please enter a name' : null,
+            onChanged: (val) => setState(()=> _currentName = val),
+          ),
+          SizedBox(height: 20.0,),
+          //  DropDown
+          DropdownButtonFormField(
+            decoration: textInputDecoration,
+            value: _currentSugars ?? '0',
+            items: sugars.map((sugar){
+              return DropdownMenuItem(
+                value: sugar,
+                child: Text('$sugar sugars'),
+              );
+            }).toList(),
+              onChanged: (val) => setState(()=> _currentSugars = val),
+          ),
+          //  Slider
+          //  Button
+          RaisedButton(
+            color: Colors.pink[400],
+            child: Text(
+              'Update',
+              style: TextStyle(color: Colors.white),
+            ),
+            onPressed: () async {
+              print(_currentName);
+              print(_currentSugars);
+              print(_currentLength);
+            },
+          ),
         ],
       ),
     );
