@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:brew_crew/models/brew.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,11 +13,12 @@ class _BrewListState extends State<BrewList> {
   Widget build(BuildContext context) {
 
     //  Access data from the stream
-    final brews = Provider.of<QuerySnapshot>(context);
+    final brews = Provider.of<List<Brew>>(context);
+    brews.forEach((brew) {
+      print('Name : ${brew.name} - Sugars : ${brew.sugars} - Strength : ${brew.strength}');
+    });
     //  print(brews.documents);
-    for(var doc in brews.documents){
-      print(doc.data);
-    }
+
 
     return Container();
   }
