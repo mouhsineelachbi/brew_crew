@@ -47,3 +47,5 @@ app.*.map.json
 
 # google service json file
 /android/app/google-services.json
+
+*.lock
