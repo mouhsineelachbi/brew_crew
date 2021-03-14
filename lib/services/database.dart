@@ -37,6 +37,6 @@ class DatabaseService {
 
   //  Get use doc stream
   Stream<DocumentSnapshot> get useData {
-    return brewCollection.document(uid).snapshots()
+    return brewCollection.document(uid).snapshots();
   }
 }
