@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:brew_crew/services/database.dart';
 import 'package:brew_crew/screens/home/brew_list.dart';
 
+
+
 class Home extends StatelessWidget {
 
   final AuthService _auth = AuthService();
